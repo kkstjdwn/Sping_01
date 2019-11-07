@@ -1,14 +1,17 @@
-package com.coo.s1.notice;
+package com.coo.notice;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+
+import org.springframework.stereotype.Service;
+
+@Service
 public class NoticeService {
 	
+	@Inject
 	private NoticeDAO dao;
-	
-	public NoticeService() {
-		this.dao = new NoticeDAO();
-	}
 	
 	public List<NoticeDTO> noticeList() throws Exception{
 		

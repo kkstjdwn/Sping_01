@@ -1,18 +1,24 @@
-package com.coo.s1.notice;
+package com.coo.notice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import com.coo.util.DBConnector;
+import javax.inject.Inject;
+import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class NoticeDAO {
 	
+	@Inject
+	private DataSource dataSource;
+	
 	public List<NoticeDTO> noticeList()throws Exception{
-		Connection con = DBConnector.getConnect();
+		Connection con = dataSource.getConnection();
 		String sql = "select * from notice order by num desc";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
@@ -40,7 +46,7 @@ public class NoticeDAO {
 	public NoticeDTO selectOne(int num) throws Exception{
 		NoticeDTO dto = null;
 		
-		Connection con = DBConnector.getConnect();
+		Connection con = dataSource.getConnection();
 		String sql = "select * from notice where num = ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
@@ -69,7 +75,7 @@ public class NoticeDAO {
 		
 		String sql = "insert into notice values(not_seq.nextval, ?, ?, ?, sysdate,0)";
 		
-		Connection con = DBConnector.getConnect();
+		Connection con = dataSource.getConnection();
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, dto.getTitle());
 		st.setString(2, dto.getWriter());

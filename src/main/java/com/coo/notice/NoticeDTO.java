@@ -1,4 +1,4 @@
-package com.coo.s1.notice;
+package com.coo.notice;
 
 import java.sql.Date;
 
