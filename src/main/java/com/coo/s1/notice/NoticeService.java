@@ -6,10 +6,12 @@ public class NoticeService {
 	
 	private NoticeDAO dao;
 	
-	public NoticeService() {
-		this.dao = new NoticeDAO();
-	}
+
 	
+	public void setDao(NoticeDAO dao) {
+		this.dao = dao;
+	}
+
 	public List<NoticeDTO> noticeList() throws Exception{
 		
 		List<NoticeDTO> ar = dao.noticeList();

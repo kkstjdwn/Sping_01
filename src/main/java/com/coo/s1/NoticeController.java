@@ -3,8 +3,9 @@ package com.coo.s1;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,10 +18,9 @@ import com.coo.s1.notice.NoticeService;
 @Controller
 @RequestMapping("notice/**")
 public class NoticeController {
+	@Inject
 	private NoticeService service;
-	public NoticeController() {
-		this.service = new NoticeService();
-	}
+	
 	/** 일반 멤버 메서드를 작성*/
 	
 	//리스트
