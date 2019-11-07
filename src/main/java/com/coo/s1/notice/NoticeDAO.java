@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
+
 import com.coo.util.DBConnector;
 
+@Scope("prototype")
+@Repository
 public class NoticeDAO {
 	
 	public List<NoticeDTO> noticeList()throws Exception{
@@ -32,6 +37,7 @@ public class NoticeDAO {
 		rs.close();
 		st.close();
 		con.close();
+		
 		
 		
 		return ar;
